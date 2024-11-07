@@ -1,0 +1,398 @@
+openapi: 3.0.3
+info:
+  title: "Big Boyz Pizza API"
+  version: 1.0.0
+servers:
+  - url: "http://localhost/"
+tags:
+  - name: Accounts
+  - name: Orders
+  - name: SignUp
+  - name: Spots
+  - name: MenuItems
+  - name: Bookings
+security:
+  - bearerAuth: []
+paths:
+  /sign-up:
+    post:
+      operationId: signUp
+      summary: registration
+      tags:
+        - SignUp
+      security: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignUpForm'
+      responses:
+        201:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountDto'
+  /confirm/{confirm-code}:
+    get:
+      operationId: checkConfirm
+      summary: confirm your email
+      parameters:
+        - name: confirm-code
+          schema:
+            type: string
+          in: path
+      tags:
+        - SignUp
+      security: []
+      responses:
+        200:
+          description: OK
+  /accounts:
+    get:
+      security:
+        - bearerAuth: []
+      operationId: getAllAccounts
+      summary: get all accounts
+      tags:
+        - Accounts
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountDtoList'
+    put:
+      security:
+        - bearerAuth: []
+      operationId: updateAccount
+      summary: update your account information
+      tags:
+        - Accounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignUpForm'
+      responses:
+        202:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountDto'
+  /accounts/{account-id}:
+    patch:
+      security:
+        - bearerAuth: []
+      operationId: banAccount
+      summary: ban an account
+      parameters:
+        - name: account-id
+          schema:
+            type: integer
+            format: int64
+          in: path
+      tags:
+        - Accounts
+      responses:
+        202:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountDto'
+  /bookings:
+    get:
+      security:
+        - bearerAuth: []
+      operationId: getAllAccountBookings
+      summary: get all your active bookings
+      tags:
+        - Bookings
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookingDtoList'
+    post:
+      security:
+        - bearerAuth: []
+      operationId: bookTable
+      summary: book table
+      tags:
+        - Bookings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookingForm'
+      responses:
+        202:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookingDto'
+  /bookings/{booking-id}:
+    patch:
+      security:
+        - bearerAuth: []
+      operationId: cancelBooking
+      summary: cancel booking
+      tags:
+        - Bookings
+      parameters:
+        - name: booking-id
+          schema:
+            type: integer
+            format: int64
+          in: path
+      responses:
+        201:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookingDto'
+  /menu:
+    get:
+      security:
+        - bearerAuth: []
+      tags:
+        - MenuItems
+      operationId: getMenuItems
+      summary: get all menu items
+      parameters:
+        - name: page
+          schema:
+            type: integer
+          in: query
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MenuItemsPage'
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - MenuItems
+      operationId: addMenuItem
+      summary: add new menu item
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MenuItemForm'
+      responses:
+        202:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MenuItemDto'
+  /menu/{item-id}:
+    put:
+      security:
+        - bearerAuth: [ ]
+      tags:
+        - MenuItems
+      operationId: updateMenuItem
+      summary: update menu item information
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MenuItemForm'
+      parameters:
+        - name: item-id
+          in: path
+          schema:
+            type: integer
+            format: int64
+
+      responses:
+        202:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MenuItemDto'
+  /orders:
+    get:
+      security:
+        - bearerAuth: [ ]
+      operationId: getAllAccountOrders
+      summary: get information about your orders
+      tags:
+        - Orders
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderDtoList'
+    post:
+      security:
+        - bearerAuth: [ ]
+      operationId: makeOrder
+      summary: make new order
+      tags:
+        - Orders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderForm'
+      responses:
+        202:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderDto'
+  /orders/{order-id}:
+    patch:
+      security:
+        - bearerAuth: [ ]
+      operationId: confirmOrder
+      summary: confirm delivery
+      tags:
+        - Orders
+      parameters:
+        - name: order-id
+          schema:
+            type: integer
+            format: int64
+          in: path
+      responses:
+        201:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderDto'
+  /spots:
+    get:
+      security:
+        - bearerAuth: [ ]
+      tags:
+        - Spots
+      operationId: getAllSpots
+      summary: get information about spots
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpotDtoList'
+    post:
+      security:
+        - bearerAuth: [ ]
+      tags:
+        - Spots
+      operationId: addSpot
+      summary: add new spot
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SpotForm'
+      responses:
+        202:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpotDto'
+  /spots/{spot-id}:
+    put:
+      security:
+        - bearerAuth: [ ]
+      tags:
+        - Spots
+      operationId: updateSpot
+      summary: update information about spot
+      parameters:
+        - name: spot-id
+          schema:
+            type: integer
+            format: int64
+          in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SpotForm'
+      responses:
+        202:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpotDto'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    AccountDto:
+      type: object
+    AccountDtoList:
+      type: array
+      items:
+        $ref: '#/components/schemas/AccountDto'
+    BookingDto:
+      type: object
+    BookingDtoList:
+      type: array
+      items:
+        $ref: '#/components/schemas/BookingDto'
+    MenuItemDto:
+      type: object
+    MenuItemsPage:
+      type: object
+    OrderDto:
+      type: object
+    OrderDtoList:
+      type: array
+      items:
+        $ref: '#/components/schemas/OrderDto'
+    SpotDto:
+      type: object
+    SpotDtoList:
+      type: array
+      items:
+        $ref: '#/components/schemas/SpotDto'
+    SignUpForm:
+      $ref: '#/components/schemas/SignUpForm'
+    BookingForm:
+      $ref: '#/components/schemas/BookingForm'
+    MenuItemForm:
+      $ref: '#/components/schemas/MenuItemForm'
+    OrderForm:
+      $ref: '#/components/schemas/OrderForm'
+    SpotForm:
+      $ref: '#/components/schemas/SpotForm'
+
+
+
+
+
+
+
+
+
+
+
+
