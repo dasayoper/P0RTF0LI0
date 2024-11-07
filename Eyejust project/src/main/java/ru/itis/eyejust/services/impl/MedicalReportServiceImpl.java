@@ -81,7 +81,11 @@ public class MedicalReportServiceImpl implements MedicalReportService {
             medicalReportRepository.save(newReport);
             log.info("successfully save report with id " + newReport.getId());
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            log.error("Error creating PDF report", e);
+            throw new RuntimeException("Error creating PDF report", e);
+        } catch (Exception e) {
+            log.error("Unexpected error", e);
+            throw new RuntimeException("Unexpected error", e);
         }
     }
 
@@ -143,7 +147,11 @@ public class MedicalReportServiceImpl implements MedicalReportService {
             medicalReportRepository.save(newReport);
             log.info("successfully save uploaded report with id " + newReport.getId());
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            log.error("Error creating PDF report", e);
+            throw new RuntimeException("Error creating PDF report", e);
+        } catch (Exception e) {
+            log.error("Unexpected error", e);
+            throw new RuntimeException("Unexpected error", e);
         }
     }
 }

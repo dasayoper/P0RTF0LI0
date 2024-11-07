@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import ru.itis.eyejust.dto.SignUpDto;
 import ru.itis.eyejust.dto.UserDto;
 import ru.itis.eyejust.exceptions.UserAlreadyExistsException;
@@ -29,7 +28,6 @@ public class SignUpServiceImpl implements SignUpService {
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    @Transactional
     public UserDto signUp(SignUpDto signUpDto) {
         log.info("start registering new user");
         if (userRepository.findByEmail(signUpDto.getEmail()).isPresent()) {

@@ -24,7 +24,6 @@ public class FileInfoServiceImpl implements FileInfoService {
     private final FileInfoRepository fileInfoRepository;
 
     @Override
-    @Transactional
     public FileInfo saveToStorage(MultipartFile file, UUID userId) {
         log.info("start saving new file");
         try {

@@ -21,7 +21,6 @@ public class UserEntityServiceImpl implements UserEntityService {
     private final UserRepository userRepository;
 
     @Override
-    @Transactional
     public UserEntity updateUserInfo(UserInfoFormDto userInfoFormDto, UUID userId) {
         log.info("start updating personal information about user " + userId);
         UserEntity user = userRepository.findById(userId)
