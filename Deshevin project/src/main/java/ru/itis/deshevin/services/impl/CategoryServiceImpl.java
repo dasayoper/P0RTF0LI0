@@ -27,7 +27,6 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    @Transactional
     public void saveCategory(CategoryDto categoryDto) {
         log.info("Start saving Category " + categoryDto);
         categoryRepository.save(categoryMapper.toCategoryEntity(categoryDto));
@@ -35,7 +34,6 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    @Transactional
     public void deleteCategory(String id) {
         log.info("Start deleting Category with id = " + UUID.fromString(id));
         categoryRepository.findById(UUID.fromString(id)).ifPresent(

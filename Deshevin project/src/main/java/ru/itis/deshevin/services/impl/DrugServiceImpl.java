@@ -31,7 +31,6 @@ public class DrugServiceImpl implements DrugService {
     private final FilesService filesService;
 
     @Override
-    @Transactional
     public void saveDrug(AddDrugDto addDrugDto) {
         log.info("Start saving drug = " + addDrugDto);
         FileInfoEntity newFile = null;
@@ -46,7 +45,6 @@ public class DrugServiceImpl implements DrugService {
     }
 
     @Override
-    @Transactional
     public void updateDrug(AddDrugDto addDrugDto, UUID id) {
         log.info("Start updating drug with id = " + id + " " + addDrugDto);
         DrugEntity drugEntity = drugRepository.findById(id).orElseGet(DrugEntity::new);

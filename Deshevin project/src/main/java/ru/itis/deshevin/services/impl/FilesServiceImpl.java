@@ -30,7 +30,6 @@ public class FilesServiceImpl implements FilesService {
 
     private final FilesRepository filesRepository;
 
-    @Transactional
     @Override
     public Optional<FileInfoEntity> saveFileToStorage(MultipartFile multipartFile) {
         try {

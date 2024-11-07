@@ -28,7 +28,6 @@ public class SignUpServiceImpl implements SignUpService {
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    @Transactional
     public UserDto signUp(SignUpDto signUpDto) {
         log.info("Start registering account: " + signUpDto);
         if (userRepository.findByEmail(signUpDto.getEmail()).isPresent()) {

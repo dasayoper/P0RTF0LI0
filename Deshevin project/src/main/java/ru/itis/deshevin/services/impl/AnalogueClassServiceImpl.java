@@ -27,14 +27,12 @@ public class AnalogueClassServiceImpl implements AnalogueClassService {
     }
 
     @Override
-    @Transactional
     public void saveAnalogueClass(AnalogueClassDto analogueClassDto) {
         log.info("Saving Analogue class " + analogueClassDto);
         analogueClassRepository.save(analogueClassMapper.toAnalogueClassEntity(analogueClassDto));
     }
 
     @Override
-    @Transactional
     public void deleteAnalogueClass(UUID id) {
         log.info("Delete Analogue class with id = " + id);
         analogueClassRepository.findById(id).ifPresent(
