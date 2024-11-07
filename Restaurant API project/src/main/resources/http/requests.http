@@ -1,0 +1,15 @@
+### Вход
+
+POST localhost/login
+Content-Type: application/json
+
+{
+  "email": "test@mail.ru",
+  "password": "qwerty"
+}
+
+### logout
+
+GET localhost/logout
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QG1haWwucnUiLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2NTQzNjY1MjEsImlhdCI6MTY1NDM2NTMyMX0.oPCtsQAcVPTNcIJfE8hfJYW40OFrAyv-f1aqP0mWmYw
+
