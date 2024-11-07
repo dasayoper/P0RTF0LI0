@@ -1,0 +1,321 @@
+body {
+    font-family: Inter, sans-serif;
+}
+
+h1, h2, h3, p {
+    color: #1D0D8D;
+}
+
+p {
+    font-size: 19px;
+}
+
+a {
+    text-decoration: none;
+    padding: 8px;
+    font-size: 20px;
+}
+
+a:active, a:hover {
+    font-weight: bold;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.table-align {
+    margin-top: 40px;
+}
+
+.navbar {
+    background-color: #1D0D8D;
+    height: 64px;
+    width: 100%;
+}
+
+.navbar-content {
+    padding-top: 16px;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.navbar-brand {
+    font-size: 28px;
+    color: white;
+    font-weight: bold;
+}
+
+.navbar-text-content {
+    width: 80%;
+    padding-top: 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.navbar-text {
+    color: white;
+    font-size: 18px;
+}
+
+.btn {
+    background-color: #FC462D;
+    border: 3px solid #FC462D;
+    cursor: pointer;
+    border-radius: 16px;
+    padding-left: 18px;
+    padding-right: 18px;
+    color: white;
+    font-family: Inter, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    height: 43px;
+}
+
+.btn-delete {
+    color: #FC462D;
+    font-size: 20px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}
+
+.btn-align {
+    margin-bottom: 30px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+    background-image: linear-gradient(180deg, #e2defc, white);
+}
+
+.home-content {
+    display: grid;
+    place-items: center;
+    height: 70vh;
+}
+
+.content {
+    display: grid;
+    place-items: center;
+}
+
+.home-text-main {
+    text-align: center;
+    font-size: 40px;
+}
+
+.home-text {
+    text-align: center;
+    font-size: 20px;
+}
+
+.img-pill1 {
+    position: fixed;
+    width: 215px;
+    height: 175px;
+    margin-top: 5%;
+    margin-left: 15%;
+}
+
+.img-pill2 {
+    position: fixed;
+    width: 106px;
+    height: 142px;
+    margin-top: 25%;
+    margin-left: 18%;
+}
+
+.img-pill3 {
+    position: fixed;
+    width: 145px;
+    height: 151px;
+    margin-top: 6%;
+    margin-left: 70%;
+}
+
+.img-pill4 {
+    position: fixed;
+    width: 230px;
+    height: 190px;
+    margin-top: 21%;
+    margin-left: 65%;
+}
+
+.input-form {
+    font-family: Inter, sans-serif;
+    border: 1px solid #1D0D8D;
+    border-radius: 8px;
+    padding: 12px;
+    width: 400px;
+    font-size: large;
+}
+
+.form-wrapper {
+    display: grid;
+    place-items: center;
+}
+
+.go-sign-up {
+    color: #FC462D;
+    font-size: 18px;
+}
+
+.profile-wrapper {
+    display: grid;
+    place-items: center;
+    height: 70vh;
+}
+
+.profile-content {
+    border: 1px solid #1D0D8D;
+    padding: 16px;
+    margin-bottom: 40px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-text {
+    color: black;
+}
+
+.drug-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.item-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: solid 1px #1D0D8D;
+}
+
+.form-check-label {
+    color: #1D0D8D;
+    font-size: 19px;
+}
+
+.input__wrapper {
+    width: 100%;
+    position: relative;
+    text-align: center;
+}
+
+.input-align {
+    margin-top: 20px;
+}
+
+.input__file {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+}
+
+.input__file-button-text {
+    line-height: 1;
+    margin-top: 1px;
+}
+
+.input__file-button {
+    width: 100%;
+    max-width: 290px;
+    height: 30px;
+    color: #FC462D;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.title-photo {
+    display: grid;
+    place-items: center;
+}
+
+.drug-name {
+    text-decoration: none;
+    padding: 0;
+    font-size: 28px;
+    font-weight: bold;
+    color: #FC462D;
+}
+
+.table-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #1D0D8D;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.table-title {
+    color: #1D0D8D;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+td {
+    vertical-align: baseline;
+    width: 2000px;
+    border: none !important;
+}
+
+th {
+    padding-bottom: 15px;
+}
+
+table {
+    border-collapse: collapse;
+    border: none;
+}
+
+tr {
+    border-top: 1px solid #1D0D8D;
+    border-bottom: 1px solid #1D0D8D;
+}
+
+tr:first-child {
+    border-top: none;
+}
+
+.photo-desc {
+    display: flex;
+    flex-direction: row;
+    vertical-align: baseline;
+}
+
+.drug-desc {
+    margin-left: 30px;
+    width: 600px;
+    text-align: left;
+}
+
+.drug-info {
+}
+
+.search {
+    vertical-align: baseline;
+}
+
+.inst-title {
+    display: grid;
+    place-items: center;
+}
